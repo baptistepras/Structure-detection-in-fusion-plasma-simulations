@@ -1,15 +1,16 @@
 # Environment for blob detection in Tokam2D simulations.
 # Everything except Ultralytics comes from conda-forge, so the same file works
-# on macOS arm64 (MPS) and on a Linux CUDA machine.
+# on macOS arm64 (MPS) and on a Linux CUDA machine. OpenCV is not listed here:
+# Ultralytics installs opencv-python itself, and a second copy from conda
+# would conflict with it.
 name: plasma-blobs
 channels:
   - conda-forge
 dependencies:
-  - python=3.12
+  - python=3.10
   - pytorch>=2.3
   - torchvision
   - numpy
-  - opencv          # image conversion, filters, patches
   - h5py            # challenge videos
   - pillow
   - pyyaml          # YOLO dataset files

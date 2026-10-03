@@ -117,6 +117,9 @@ def get_infer_device() -> str:
 DEVICE = get_device()
 RANDOM_SEED = 42
 DTYPE = torch.float32
+YOLO_ROOT = Path("/tmp/yolo_env")
+YOLO_ROOT_BLOBI = Path("/tmp/yolo_env_blobi")
+YOLO_PROJECT = "/tmp/runs"
 
 # =========================
 # CONFIGS
@@ -2121,7 +2124,7 @@ def train_model(training_dir: str | Path, blobi: bool = False) -> torch.nn.Modul
     yolo = cfg["yolo"]
 
     training_path = Path(training_dir)
-    yolo_root = Path("/tmp/yolo_env")
+    yolo_root = YOLO_ROOT
 
     # Reset temp folder to avoid stale artifacts
     if yolo_root.exists():
@@ -2161,7 +2164,7 @@ def train_model(training_dir: str | Path, blobi: bool = False) -> torch.nn.Modul
         save=True,
         plots=False,
         augment=True,
-        project="/tmp/runs",
+        project=YOLO_PROJECT,
         name=cfg["cfg_id"],
         exist_ok=True,
         cache=False,
@@ -2299,7 +2302,7 @@ def train_model(training_dir: str | Path, blobi: bool = False) -> torch.nn.Modul
     # blob_i images are exported to images/train alongside blob_dwi when blobi=True,
     # but we need them separately here so we use a dedicated temporary yolo_root.
     print("[CNN] Converting blob_i for CNN training data mining...")
-    yolo_root_blobi = Path("/tmp/yolo_env_blobi")
+    yolo_root_blobi = YOLO_ROOT_BLOBI
     if yolo_root_blobi.exists():
         shutil.rmtree(yolo_root_blobi, ignore_errors=True)
 

@@ -24,8 +24,8 @@ Many other ideas were tested and did not improve the score, such as larger backb
 
 The project uses its own environment, `plasma-blobs`, defined in [`environment.yml`](environment.yml):
 
-- Python 3.12;
-- PyTorch and Ultralytics (YOLOv8) for detection, OpenCV, h5py, NumPy, Pillow, PyYAML, and Matplotlib.
+- Python 3.10;
+- PyTorch and Ultralytics (YOLOv8) for detection, OpenCV (installed by Ultralytics), h5py, NumPy, Pillow, PyYAML, and Matplotlib.
 
 The code runs on CUDA, Apple GPUs (MPS), and CPU. A GPU is strongly recommended, since the pipeline trains YOLO twice. The first run downloads the pretrained `yolov8n.pt` weights, so it needs internet access.
 
@@ -65,7 +65,6 @@ docs/           implementation and usage
 ## References
 
 - G. Jocher, A. Chaurasia, and J. Qiu. Ultralytics YOLOv8. 2023. https://github.com/ultralytics/ultralytics
-- J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: unified, real-time object detection. *CVPR*, 2016.
 - D.-H. Lee. Pseudo-label: the simple and efficient semi-supervised learning method for deep neural networks. *ICML Workshop on Challenges in Representation Learning*, 2013.
 
 ## License
